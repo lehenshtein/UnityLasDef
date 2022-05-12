@@ -116,7 +116,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   health: 0
-  explosion: {fileID: 4188019857520069405, guid: b42ca7678f185c14d86acfdcb609921c, type: 3}
+  applyCameraShake: 0
 --- !u!114 &2216743882131235726
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,7 +147,7 @@ MonoBehaviour:
   projectileLifetime: 5
   baseFireRate: 1.2
   useAI: 1
-  fireRateVariance: 0
+  fireRateVariance: 0.3
   minFireRate: 0.1
   isFiring: 0
 --- !u!114 &-7167139260316566909

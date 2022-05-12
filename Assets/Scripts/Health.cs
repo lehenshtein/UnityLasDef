@@ -6,14 +6,27 @@ public class Health : MonoBehaviour
 {
     [SerializeField] int maxHealth = 100;
     [SerializeField] int health;
+    [SerializeField] bool applyCameraShake = false;
     Effects effects;
-    // [SerializeField] ParticleSystem explosion;
+    CameraShake cameraShake;
+    AudioPlayer audioPlayer;
+    ScoreKeeper scoreKeeper;
+    LevelManager levelManager;
+
     void Awake() {
         effects = GetComponent<Effects>();
+        cameraShake = Camera.main.GetComponent<CameraShake>();
+        audioPlayer = FindObjectOfType<AudioPlayer>();
+        scoreKeeper = FindObjectOfType<ScoreKeeper>();
+        levelManager = FindObjectOfType<LevelManager>();
     }
 
     void Start () {
         health = maxHealth;
+    }
+
+    public int GetMaxHealth() {
+        return maxHealth;
     }
 
     public int GetHealth() {
@@ -25,6 +38,7 @@ public class Health : MonoBehaviour
 
         if (damageDealer != null) {
             DecreaseHealth(damageDealer.GetDamage());
+            ShakeCamera();
             PlayHitEffect();
             damageDealer.Hit();
         }
@@ -42,7 +56,22 @@ public class Health : MonoBehaviour
     void DecreaseHealth(int damage) {
         health -= damage;
         if (health < 0) {
+            audioPlayer.PlayExplosionClip();
+            AddScore();
+            GoToEndGameMenu();
             Destroy(gameObject);
+        }
+    }
+
+    void AddScore() {
+        if (!applyCameraShake && scoreKeeper != null) { //check that it isn't a player using camerashake var
+            scoreKeeper.IncreaseScore(maxHealth);
+        }
+    }
+
+    void GoToEndGameMenu() {
+        if (applyCameraShake && levelManager != null) { //check that it IS a player using camerashake var
+            levelManager.LoadEndMenu();
         }
     }
 
@@ -51,6 +80,12 @@ public class Health : MonoBehaviour
         if (explosion != null) {
             ParticleSystem instance = Instantiate(explosion, transform.position, Quaternion.identity);
             // Destroy(instance.gameObject, instance.main.duration + instance.main.startLifetime.constantMax);
+        }
+    }
+
+    void ShakeCamera() {
+        if (cameraShake != null && applyCameraShake){
+            cameraShake.Play();
         }
     }
 }

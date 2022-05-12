@@ -18,6 +18,12 @@ public class Shooter : MonoBehaviour
     Coroutine firingCoroutine;
     [HideInInspector] public bool isFiring = false;
 
+    AudioPlayer audioPlayer;
+
+    void Awake() {
+        audioPlayer = FindObjectOfType<AudioPlayer>();
+    }
+
     void Start() {
         if (useAI) {
             isFiring = true;
@@ -44,6 +50,9 @@ public class Shooter : MonoBehaviour
             Rigidbody2D rb = missle.GetComponent<Rigidbody2D>();
             if (rb != null) {
                 rb.velocity = new Vector2(0, useAI ? -projectileSpeed : projectileSpeed);
+            }
+            if (audioPlayer != null) {
+                audioPlayer.PlayShootingClip();
             }
             
             Destroy(missle, projectileLifetime);

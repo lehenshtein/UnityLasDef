@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 5639092945358411316}
   - component: {fileID: 337388017107623501}
   - component: {fileID: 968601960760464143}
+  - component: {fileID: 3032246331110865537}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -206,7 +207,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 200
   health: 0
-  explosion: {fileID: 4188019857520069405, guid: b42ca7678f185c14d86acfdcb609921c, type: 3}
+  applyCameraShake: 1
 --- !u!114 &337388017107623501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -240,6 +241,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosion: {fileID: 4188019857520069405, guid: b42ca7678f185c14d86acfdcb609921c, type: 3}
+--- !u!114 &3032246331110865537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7369925599304355600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29ad6507332de0d42b937808b2a600f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementModifier: 8
+  paddingLeft: 0.5
+  paddingRigt: 0.5
+  paddingTop: 6
+  paddingBottom: 2
 --- !u!1 &7705454895066264740
 GameObject:
   m_ObjectHideFlags: 0

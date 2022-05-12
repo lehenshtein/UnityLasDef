@@ -73,7 +73,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1112767617931383188, guid: 09137a12192e49743873bd03d1259817, type: 3}
       propertyPath: baseFireRate
-      value: 1.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1112767617931383188, guid: 09137a12192e49743873bd03d1259817, type: 3}
       propertyPath: fireRateVariance
@@ -135,5 +135,6 @@ PrefabInstance:
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[4].y
       value: 0.36830562
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 09137a12192e49743873bd03d1259817, type: 3}
