@@ -52,7 +52,7 @@ public class Shooter : MonoBehaviour
                 rb.velocity = new Vector2(0, useAI ? -projectileSpeed : projectileSpeed);
             }
             if (audioPlayer != null) {
-                audioPlayer.PlayShootingClip();
+                audioPlayer.GetInstance().PlayShootingClip();
             }
             
             Destroy(missle, projectileLifetime);
